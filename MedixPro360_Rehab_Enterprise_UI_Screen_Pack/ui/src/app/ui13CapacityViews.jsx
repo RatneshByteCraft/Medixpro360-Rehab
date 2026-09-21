@@ -1,0 +1,70 @@
+import React, { useState } from 'react';
+import { Plus, ShieldCheck } from 'lucide-react';
+import { can, PERMISSIONS } from './access.js';
+import {
+  activateCapacityPolicy,
+  activateBedCapacityPurchase,
+  calculateBedCapacityQuote,
+  createCapacityPolicy,
+  createBedCapacityCheckout,
+  getCapacityEntitlement,
+  getCapacityPolicy,
+  getCapacityPolicyHistory,
+  getUi13VisibleRecords,
+  recordSimulatedPaymentResult,
+  supersedeCapacityPolicy,
+  updateCapacityPolicyDraft,
+  useUi13Store
+} from './ui13Store.js';
+import { getUi12State } from './ui12Store.js';
+
+function Notice({ message }) {
+  return message ? <div className="privacyNote"><ShieldCheck size={16} /> {message}</div> : null;
+}
+
+function Header({ title, detail }) {
+  return <div className="adminHeader"><div><span className="kicker">Platform commercial billing</span><h2>{title}</h2><p>{detail}</p></div></div>;
+}
+
+export function CapacityPolicyView({ access }) {
+  useUi13Store();
+  const records = getUi13VisibleRecords(access);
+  const [selectedId, setSelectedId] = useState(null);
+  const [message, setMessage] = useState('');
+  const blank = { planId: 'plan-professional', market: 'India', currency: 'INR', includedBedsPerFacility: 25, additionalBedPrice: 500, additionalBedPriceUnit: 'bed/month', prorationMethod: 'DAILY', dayBasis: 'ACTUAL_CALENDAR_DAYS', purchaseDateRule: 'INCLUSIVE', periodEndRule: 'INCLUSIVE', discountable: false, taxable: false, taxRate: 0, effectiveFrom: '01 Jan 2027', effectiveTo: null };
+  const [form, setForm] = useState(blank);
+  const set = key => value => setForm(current => ({ ...current, [key]: value }));
+  const edit = policy => { setSelectedId(policy.id); setForm({ ...policy }); setMessage(''); };
+  const create = () => { const id = createCapacityPolicy(access, form); setMessage(id ? `Policy ${id} created.` : 'Policy validation or overlap check failed.'); if (id) setSelectedId(id); };
+  const save = () => { const ok = selectedId ? updateCapacityPolicyDraft(access, selectedId, form) : false; setMessage(ok ? 'Policy saved.' : 'Only Draft or Future policies can be edited.'); };
+  const activate = () => setMessage(selectedId && activateCapacityPolicy(access, selectedId) ? 'Policy activated.' : 'Policy activation blocked.');
+  const supersede = () => setMessage(selectedId && supersedeCapacityPolicy(access, selectedId, { effectiveTo: form.effectiveTo || '31 Dec 2026' }) ? 'Policy superseded.' : 'Policy supersession blocked.');
+  if (!can(access, PERMISSIONS.PLATFORM_CAPACITY_POLICY_VIEW)) return <div className="pageState amber"><h2>Capacity policy restricted</h2><p>Capacity policy administration requires platform permission.</p></div>;
+  return <><Header title="Bed capacity policy" detail="Versioned commercial policy. Historical effective policies are not destructively rewritten." /><section className="panel"><div className="formGrid"><label>Plan<select value={form.planId} onChange={event => set('planId')(event.target.value)}><option value="plan-professional">Professional</option><option value="plan-enterprise">Enterprise</option></select></label><label>Market<input value={form.market} onChange={event => set('market')(event.target.value)} /></label><label>Currency<input value={form.currency} onChange={event => set('currency')(event.target.value)} /></label><label>Included beds<input type="number" min="0" step="1" value={form.includedBedsPerFacility} onChange={event => set('includedBedsPerFacility')(Number(event.target.value))} /></label><label>Additional bed price<input type="number" min="0" step="0.01" value={form.additionalBedPrice} onChange={event => set('additionalBedPrice')(Number(event.target.value))} /></label><label>Price unit<input value={form.additionalBedPriceUnit} onChange={event => set('additionalBedPriceUnit')(event.target.value)} /></label><label>Tax rate %<input type="number" min="0" step="0.01" value={form.taxRate || 0} onChange={event => set('taxRate')(Number(event.target.value))} /></label><label>Effective from<input value={form.effectiveFrom} onChange={event => set('effectiveFrom')(event.target.value)} /></label><label>Effective to<input value={form.effectiveTo || ''} onChange={event => set('effectiveTo')(event.target.value || null)} /></label><label>Proration<select value={form.prorationMethod} onChange={event => set('prorationMethod')(event.target.value)}><option>DAILY</option></select></label><label>Day basis<select value={form.dayBasis} onChange={event => set('dayBasis')(event.target.value)}><option>ACTUAL_CALENDAR_DAYS</option></select></label><label>Purchase-date rule<select value={form.purchaseDateRule} onChange={event => set('purchaseDateRule')(event.target.value)}><option>INCLUSIVE</option><option>EXCLUSIVE</option></select></label><label>Period-end rule<select value={form.periodEndRule} onChange={event => set('periodEndRule')(event.target.value)}><option>INCLUSIVE</option><option>EXCLUSIVE</option></select></label><label><input type="checkbox" checked={Boolean(form.discountable)} onChange={event => set('discountable')(event.target.checked)} /> Discountable</label><label><input type="checkbox" checked={Boolean(form.taxable)} onChange={event => set('taxable')(event.target.checked)} /> Taxable</label></div><div className="pageActions"><button className="primary" onClick={create}>Create version</button><button className="secondaryButton" disabled={!selectedId} onClick={save}>Save draft/future</button><button className="secondaryButton" disabled={!selectedId} onClick={activate}>Activate</button><button className="secondaryButton" disabled={!selectedId} onClick={supersede}>Supersede</button></div><Notice message={message} /></section><section className="panel"><h3>Policy history</h3><div className="adminTable"><div className="adminTr adminTh"><span>Version</span><span>Plan / Market</span><span>Included</span><span>Price</span><span>Effective</span><span>Status</span><span>Action</span></div>{getCapacityPolicyHistory().map(policy => <div className="adminTr" key={policy.id}><span>v{policy.version}</span><span>{records.plans.find(plan => plan.id === policy.planId)?.name} · {policy.market} · {policy.currency}</span><span>{policy.includedBedsPerFacility}</span><span>{policy.additionalBedPrice} / {policy.additionalBedPriceUnit}</span><span>{policy.effectiveFrom} - {policy.effectiveTo || 'open'}</span><span>{policy.status}</span><button className="textButton" onClick={() => edit(policy)}>View / edit</button></div>)}</div></section></>;
+}
+
+function PurchaseHistory({ records }) {
+  const [selectedId, setSelectedId] = useState(null);
+  const selected = records.capacityPurchases.find(purchase => purchase.id === selectedId);
+  const facilityName = purchase => records.facilities.find(item => item.facilityId === purchase.facilityId)?.name || purchase.facilityId;
+  return <section className="panel"><h3>Capacity purchase history</h3><div className="adminTable"><div className="adminTr adminTh"><span>Date</span><span>Facility</span><span>Capacity change</span><span>Added</span><span>Total</span><span>Status</span><span>Action</span></div>{records.capacityPurchases.map(purchase => <React.Fragment key={purchase.id}><div className="adminTr"><span>{purchase.recordedAt || purchase.effectiveDate}</span><span>{facilityName(purchase)}</span><span>{purchase.previousLicensedBedCapacity} → {purchase.newLicensedBedCapacity}</span><span>+{purchase.additionalBedQuantity}</span><span>{purchase.totalAmount} {purchase.currency}</span><span>{purchase.status}</span><button className="textButton" onClick={() => setSelectedId(selectedId === purchase.id ? null : purchase.id)} aria-expanded={selectedId === purchase.id}>{selectedId === purchase.id ? 'Hide details' : 'View details'}</button></div>{selectedId === purchase.id && selected && <div className="panel" role="region" aria-label={`Purchase details ${purchase.id}`}><div className="detailRows"><span>Purchase ID</span><b>{selected.id}</b><span>Tenant</span><b>{selected.tenantId}</b><span>Subscription</span><b>{selected.subscriptionId || 'Not snapshotted'}</b><span>Facility</span><b>{facilityName(selected)}</b><span>Checkout reference</span><b>{selected.checkoutId}</b><span>Payment reference</span><b>{selected.paymentReference || 'Not recorded'}</b><span>Payment status</span><b>{selected.status}</b><span>Included capacity</span><b>{selected.includedBedCapacity}</b><span>Previous additional</span><b>{selected.previousAdditionalBedCapacity ?? 'Not snapshotted'}</b><span>Purchased additional</span><b>{selected.additionalBedQuantity}</b><span>Resulting additional</span><b>{selected.resultingAdditionalBedCapacity ?? 'Not snapshotted'}</b><span>Previous licensed</span><b>{selected.previousLicensedBedCapacity}</b><span>Resulting licensed</span><b>{selected.newLicensedBedCapacity}</b><span>Policy</span><b>{selected.policyId} · v{selected.policyVersion}</b><span>Unit price</span><b>{selected.unitPrice} {selected.currency} / {selected.priceUnit || 'Not snapshotted'}</b><span>Effective date</span><b>{selected.effectiveDate}</b><span>Period end</span><b>{selected.periodEnd}</b><span>Proration</span><b>{selected.prorationMethod} · {selected.dayBasis}</b><span>Date treatment</span><b>{selected.purchaseDateRule || 'Not snapshotted'} / {selected.periodEndRule || 'Not snapshotted'}</b><span>Base amount</span><b>{selected.subtotal} {selected.currency}</b><span>Discount eligibility</span><b>{String(selected.discountable)}</b><span>Discount reference</span><b>{selected.discountReference ? `${selected.discountReference.id} · ${selected.discountReference.type} ${selected.discountReference.value}` : 'None'}</b><span>Discount amount</span><b>{selected.discountAmount} {selected.currency}</b><span>Tax eligibility</span><b>{String(selected.taxable)}</b><span>Tax reference</span><b>{selected.taxReference ? `${selected.taxReference.rate}%` : 'None'}</b><span>Tax amount</span><b>{selected.taxAmount} {selected.currency}</b><span>Total</span><b>{selected.totalAmount} {selected.currency}</b><span>Recorded</span><b>{selected.recordedAt || 'Not snapshotted'}</b></div></div>}</React.Fragment>)}</div></section>;
+}
+
+export function CapacityPurchaseView({ access }) {
+  useUi13Store();
+  const records = getUi13VisibleRecords(access);
+  const subscription = records.subscriptions[0];
+  const [facilityId, setFacilityId] = useState(records.facilities[0]?.facilityId || '');
+  const [quantity, setQuantity] = useState('10');
+  const [checkoutId, setCheckoutId] = useState(null);
+  const [message, setMessage] = useState('');
+  const entitlement = getCapacityEntitlement(facilityId);
+  const policy = getCapacityPolicy(subscription?.planId, subscription?.currency);
+  const facility = records.facilities.find(item => item.facilityId === facilityId);
+  const activeConfiguredBeds = getUi12State().beds.filter(item => item.locationId === facility?.name && item.status === 'Active').length;
+  const remainingCapacity = Math.max(0, (entitlement?.totalLicensedBedCapacity || 0) - activeConfiguredBeds);
+  const quote = calculateBedCapacityQuote({ subscriptionId: subscription?.id, planId: subscription?.planId, currency: subscription?.currency, additionalBedQuantity: Number(quantity), effectiveDate: '21 Sep 2026', periodEnd: '30 Oct 2026' });
+  const create = () => setCheckoutId(createBedCapacityCheckout(access, { subscriptionId: subscription.id, facilityId, planId: subscription.planId, currency: subscription.currency, additionalBedQuantity: Number(quantity), effectiveDate: '21 Sep 2026', periodEnd: '30 Oct 2026' }));
+  const pay = status => { recordSimulatedPaymentResult(access, checkoutId, status); if (status === 'Succeeded') { activateBedCapacityPurchase(access, checkoutId); setMessage('Licensed capacity increased after verified payment.'); } else { setCheckoutId(null); setMessage('Payment failed; licensed capacity unchanged. Retry is available.'); } };
+  return <><Header title="Licensed bed capacity" detail="Capacity is per canonical facility and separate from occupancy." /><section className="panel"><div className="formGrid"><label>Facility<select value={facilityId} onChange={event => setFacilityId(event.target.value)}>{records.facilities.map(item => <option key={item.facilityId} value={item.facilityId}>{item.name}</option>)}</select></label><label>Additional beds<input type="number" min="1" step="1" value={quantity} onChange={event => setQuantity(event.target.value)} /></label><button className="primary" disabled={!quote || Boolean(checkoutId)} onClick={create}>Purchase additional capacity <Plus size={16} /></button></div><Notice message={message} /></section><section className="panel"><div className="detailRows"><span>Included beds</span><b>{policy?.includedBedsPerFacility}</b><span>Purchased additional beds</span><b>{entitlement?.additionalBedCapacity || 0}</b><span>Licensed capacity</span><b>{entitlement?.totalLicensedBedCapacity || policy?.includedBedsPerFacility}</b><span>Active configured beds</span><b>{activeConfiguredBeds}</b><span>Remaining capacity</span><b>{remainingCapacity}</b><span>Add-on price</span><b>{policy?.additionalBedPrice} {policy?.currency} / {policy?.additionalBedPriceUnit}</b><span>Proration</span><b>{policy?.prorationMethod} / {policy?.dayBasis}</b></div>{remainingCapacity === 0 && <Notice message="Capacity limit reached. Purchase additional capacity before activating another bed." />}</section>{quote && <section className="panel"><div className="detailRows"><span>Prorated base</span><b>{quote.baseAmount} {quote.currency}</b><span>Discount</span><b>- {quote.discountAmount} {quote.currency}</b><span>Taxable amount</span><b>{quote.taxableAmount} {quote.currency}</b><span>Tax</span><b>{quote.taxAmount} {quote.currency}</b><span>Total due</span><b>{quote.totalAmount} {quote.currency}</b></div></section>}{checkoutId && <div className="pageActions"><button className="secondaryButton" onClick={() => pay('Failed')}>Simulate failure</button><button className="primary" onClick={() => pay('Succeeded')}>Simulate verified success</button></div>}<PurchaseHistory records={records} /></>;
+}

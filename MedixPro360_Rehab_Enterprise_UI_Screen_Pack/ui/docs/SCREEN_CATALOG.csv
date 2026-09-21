@@ -1,0 +1,539 @@
+id,category,name,route
+G01,Global & Authentication,Sign In,/screens/g01/sign-in
+G02,Global & Authentication,SSO / Enterprise Identity Sign In,/screens/g02/sso-enterprise-identity-sign-in
+G03,Global & Authentication,MFA Verification,/screens/g03/mfa-verification
+G04,Global & Authentication,Forgot Password,/screens/g04/forgot-password
+G05,Global & Authentication,Reset Password,/screens/g05/reset-password
+G06,Global & Authentication,First Login / Activate Account,/screens/g06/first-login-activate-account
+G07,Global & Authentication,Accept Terms / Privacy / Required Policies,/screens/g07/accept-terms-privacy-required-policies
+G08,Global & Authentication,Select Tenant / Organisation,/screens/g08/select-tenant-organisation
+G09,Global & Authentication,Select Location / Centre,/screens/g09/select-location-centre
+G10,Global & Authentication,"My Profile, Security & Sessions",/screens/g10/my-profile-security-sessions
+SA01,Platform Super Admin,Platform Executive Dashboard,/screens/sa01/platform-executive-dashboard
+SA02,Platform Super Admin,Tenant Health / Status Dashboard,/screens/sa02/tenant-health-status-dashboard
+SA03,Platform Super Admin,Subscription / Revenue Dashboard,/screens/sa03/subscription-revenue-dashboard
+SA04,Platform Super Admin,Platform Security & Operational Health,/screens/sa04/platform-security-operational-health
+SA05,Platform Super Admin,Organisations / Tenants List,/screens/sa05/organisations-tenants-list
+SA06,Platform Super Admin,Create Tenant Wizard,/screens/sa06/create-tenant-wizard
+SA07,Platform Super Admin,Tenant Overview,/screens/sa07/tenant-overview
+SA08,Platform Super Admin,Tenant Organisation Profile,/screens/sa08/tenant-organisation-profile
+SA09,Platform Super Admin,Tenant Locations,/screens/sa09/tenant-locations
+SA10,Platform Super Admin,Tenant Subscription,/screens/sa10/tenant-subscription
+SA11,Platform Super Admin,Tenant Module Entitlements,/screens/sa11/tenant-module-entitlements
+SA12,Platform Super Admin,Tenant Limits / Usage,/screens/sa12/tenant-limits-usage
+SA13,Platform Super Admin,Tenant Branding & Domain,/screens/sa13/tenant-branding-domain
+SA14,Platform Super Admin,Tenant Region / Data Residency,/screens/sa14/tenant-region-data-residency
+SA15,Platform Super Admin,Tenant Country / Regulatory Profile,/screens/sa15/tenant-country-regulatory-profile
+SA16,Platform Super Admin,Tenant Administrators,/screens/sa16/tenant-administrators
+SA17,Platform Super Admin,Tenant Security Configuration,/screens/sa17/tenant-security-configuration
+SA18,Platform Super Admin,Tenant Integration Configuration,/screens/sa18/tenant-integration-configuration
+SA19,Platform Super Admin,Tenant Status / Suspend / Reactivate,/screens/sa19/tenant-status-suspend-reactivate
+SA20,Platform Super Admin,Tenant Audit,/screens/sa20/tenant-audit
+SA21,Platform Super Admin,Module Registry,/screens/sa21/module-registry
+SA22,Platform Super Admin,Module Detail,/screens/sa22/module-detail
+SA23,Platform Super Admin,Permission Catalogue,/screens/sa23/permission-catalogue
+SA24,Platform Super Admin,Subscription Plans / Packages,/screens/sa24/subscription-plans-packages
+SA25,Platform Super Admin,Plan → Module Mapping,/screens/sa25/plan-module-mapping
+SA26,Platform Super Admin,Feature / Limit Catalogue,/screens/sa26/feature-limit-catalogue
+SA27,Platform Super Admin,Country / Regulatory Packs,/screens/sa27/country-regulatory-packs
+SA28,Platform Super Admin,Country Pack Detail,/screens/sa28/country-pack-detail
+SA29,Platform Super Admin,Platform Users,/screens/sa29/platform-users
+SA30,Platform Super Admin,Platform Roles / Permissions,/screens/sa30/platform-roles-permissions
+SA31,Platform Super Admin,Platform Audit Explorer,/screens/sa31/platform-audit-explorer
+SA32,Platform Super Admin,Platform Configuration / Feature Flags,/screens/sa32/platform-configuration-feature-flags
+TA01,Tenant Administration,Tenant Administration Dashboard,/screens/ta01/tenant-administration-dashboard
+TA02,Tenant Administration,Organisation Profile,/screens/ta02/organisation-profile
+TA03,Tenant Administration,Subscription & Entitlements,/screens/ta03/subscription-entitlements
+TA04,Tenant Administration,Usage / Limits,/screens/ta04/usage-limits
+TA05,Tenant Administration,Locations / Centres,/screens/ta05/locations-centres
+TA06,Tenant Administration,Add/Edit Location,/screens/ta06/add-edit-location
+TA07,Tenant Administration,Facility Structure,/screens/ta07/facility-structure
+TA08,Tenant Administration,Units / Wards,/screens/ta08/units-wards
+TA09,Tenant Administration,Rooms,/screens/ta09/rooms
+TA10,Tenant Administration,Beds,/screens/ta10/beds
+TA11,Tenant Administration,Users,/screens/ta11/users
+TA12,Tenant Administration,Add User,/screens/ta12/add-user
+TA13,Tenant Administration,User Profile,/screens/ta13/user-profile
+TA14,Tenant Administration,User Role Assignment,/screens/ta14/user-role-assignment
+TA15,Tenant Administration,User Location Assignment,/screens/ta15/user-location-assignment
+TA16,Tenant Administration,User Access Preview,/screens/ta16/user-access-preview
+TA17,Tenant Administration,Invite / Activation Status,/screens/ta17/invite-activation-status
+TA18,Tenant Administration,Locked / Suspended Users,/screens/ta18/locked-suspended-users
+TA19,Tenant Administration,Active Sessions,/screens/ta19/active-sessions
+TA20,Tenant Administration,Roles,/screens/ta20/roles
+TA21,Tenant Administration,Create / Edit Role,/screens/ta21/create-edit-role
+TA22,Tenant Administration,Role Module Assignment,/screens/ta22/role-module-assignment
+TA23,Tenant Administration,Role Permission Matrix,/screens/ta23/role-permission-matrix
+TA24,Tenant Administration,Role Data Scope,/screens/ta24/role-data-scope
+TA25,Tenant Administration,Role Location Scope,/screens/ta25/role-location-scope
+TA26,Tenant Administration,Effective Access Preview,/screens/ta26/effective-access-preview
+TA27,Tenant Administration,Clone Role,/screens/ta27/clone-role
+TA28,Tenant Administration,Role Assignment History,/screens/ta28/role-assignment-history
+TA29,Tenant Administration,Master Configuration Home,/screens/ta29/master-configuration-home
+TA30,Tenant Administration,Lookup Types,/screens/ta30/lookup-types
+TA31,Tenant Administration,Lookup Values,/screens/ta31/lookup-values
+TA32,Tenant Administration,Forms & Templates,/screens/ta32/forms-templates
+TA33,Tenant Administration,Form Designer / Versioning,/screens/ta33/form-designer-versioning
+TA34,Tenant Administration,Assessment Definitions,/screens/ta34/assessment-definitions
+TA35,Tenant Administration,Clinical Terminology,/screens/ta35/clinical-terminology
+TA36,Tenant Administration,Document / Communication Templates,/screens/ta36/document-communication-templates
+TA37,Tenant Administration,Tenant Settings,/screens/ta37/tenant-settings
+W01,Staff Home & Work,My Dashboard,/screens/w01/my-dashboard
+W02,Staff Home & Work,My Clients,/screens/w02/my-clients
+W03,Staff Home & Work,My Schedule,/screens/w03/my-schedule
+W04,Staff Home & Work,My Tasks,/screens/w04/my-tasks
+W05,Staff Home & Work,Team Tasks,/screens/w05/team-tasks
+W06,Staff Home & Work,Notifications,/screens/w06/notifications
+W07,Staff Home & Work,Alerts / Escalations,/screens/w07/alerts-escalations
+W08,Staff Home & Work,Pending Reviews / Signatures,/screens/w08/pending-reviews-signatures
+W09,Staff Home & Work,Shift / Centre Overview,/screens/w09/shift-centre-overview
+R01,Referral & Pre-Admission,Referral / Enquiry Dashboard,/screens/r01/referral-enquiry-dashboard
+R02,Referral & Pre-Admission,Referral List,/screens/r02/referral-list
+R03,Referral & Pre-Admission,New Referral,/screens/r03/new-referral
+R04,Referral & Pre-Admission,Referral Detail,/screens/r04/referral-detail
+R05,Referral & Pre-Admission,Referral Documents,/screens/r05/referral-documents
+R06,Referral & Pre-Admission,Pre-Admission Screening,/screens/r06/pre-admission-screening
+R07,Referral & Pre-Admission,Eligibility / Suitability Review,/screens/r07/eligibility-suitability-review
+R08,Referral & Pre-Admission,Referral Clinical Review,/screens/r08/referral-clinical-review
+R09,Referral & Pre-Admission,Referral Tasks,/screens/r09/referral-tasks
+R10,Referral & Pre-Admission,Referral Communication History,/screens/r10/referral-communication-history
+R11,Referral & Pre-Admission,Referral Decision,/screens/r11/referral-decision
+R12,Referral & Pre-Admission,Waitlist,/screens/r12/waitlist
+R13,Referral & Pre-Admission,Convert Referral to Admission,/screens/r13/convert-referral-to-admission
+CR01,Client Registry,Client Search / Registry,/screens/cr01/client-search-registry
+CR02,Client Registry,Register Client,/screens/cr02/register-client
+CR03,Client Registry,Duplicate Candidate Review,/screens/cr03/duplicate-candidate-review
+CR04,Client Registry,Client Identity,/screens/cr04/client-identity
+CR05,Client Registry,Demographics,/screens/cr05/demographics
+CR06,Client Registry,Contact / Address,/screens/cr06/contact-address
+CR07,Client Registry,Emergency Contacts,/screens/cr07/emergency-contacts
+CR08,Client Registry,Identifiers,/screens/cr08/identifiers
+CR09,Client Registry,Relationships / Family,/screens/cr09/relationships-family
+CR10,Client Registry,Client Merge,/screens/cr10/client-merge
+CR11,Client Registry,Client Correction History,/screens/cr11/client-correction-history
+P360-01,Client 360,Overview,/screens/p360-01/overview
+P360-02,Client 360,Timeline,/screens/p360-02/timeline
+P360-03,Client 360,Admissions / Encounters,/screens/p360-03/admissions-encounters
+P360-04,Client 360,Problems / Conditions,/screens/p360-04/problems-conditions
+P360-05,Client 360,Allergies,/screens/p360-05/allergies
+P360-06,Client 360,Assessments,/screens/p360-06/assessments
+P360-07,Client 360,Treatment Plan,/screens/p360-07/treatment-plan
+P360-08,Client 360,Goals,/screens/p360-08/goals
+P360-09,Client 360,Care Team,/screens/p360-09/care-team
+P360-10,Client 360,Therapy,/screens/p360-10/therapy
+P360-11,Client 360,Medication,/screens/p360-11/medication
+P360-12,Client 360,Observations / Vitals,/screens/p360-12/observations-vitals
+P360-13,Client 360,Residential,/screens/p360-13/residential
+P360-14,Client 360,Diagnostics,/screens/p360-14/diagnostics
+P360-15,Client 360,Family,/screens/p360-15/family
+P360-16,Client 360,Documents,/screens/p360-16/documents
+P360-17,Client 360,Billing,/screens/p360-17/billing
+P360-18,Client 360,Aftercare,/screens/p360-18/aftercare
+AD01,Admission & Onboarding,Admission Dashboard,/screens/ad01/admission-dashboard
+AD02,Admission & Onboarding,Admissions List,/screens/ad02/admissions-list
+AD03,Admission & Onboarding,New Admission Wizard,/screens/ad03/new-admission-wizard
+AD04,Admission & Onboarding,Admission Details,/screens/ad04/admission-details
+AD05,Admission & Onboarding,Programme / Centre Selection,/screens/ad05/programme-centre-selection
+AD06,Admission & Onboarding,Room / Bed Allocation,/screens/ad06/room-bed-allocation
+AD07,Admission & Onboarding,Admission Clinical Information,/screens/ad07/admission-clinical-information
+AD08,Admission & Onboarding,Identity / Document Verification,/screens/ad08/identity-document-verification
+AD09,Admission & Onboarding,Consent & Privacy Notices,/screens/ad09/consent-privacy-notices
+AD10,Admission & Onboarding,Electronic Signature,/screens/ad10/electronic-signature
+AD11,Admission & Onboarding,Belongings / Valuables,/screens/ad11/belongings-valuables
+AD12,Admission & Onboarding,Admission Risk Screening,/screens/ad12/admission-risk-screening
+AD13,Admission & Onboarding,Initial Care Team Assignment,/screens/ad13/initial-care-team-assignment
+AD14,Admission & Onboarding,Admission Checklist,/screens/ad14/admission-checklist
+AD15,Admission & Onboarding,Complete Admission,/screens/ad15/complete-admission
+CL01,Clinical Assessment,Clinical Workspace,/screens/cl01/clinical-workspace
+CL02,Clinical Assessment,Initial Assessment,/screens/cl02/initial-assessment
+CL03,Clinical Assessment,Psychiatric Assessment,/screens/cl03/psychiatric-assessment
+CL04,Clinical Assessment,Psychological Assessment,/screens/cl04/psychological-assessment
+CL05,Clinical Assessment,Physician / Medical Assessment,/screens/cl05/physician-medical-assessment
+CL06,Clinical Assessment,Mental Status Examination,/screens/cl06/mental-status-examination
+CL07,Clinical Assessment,Substance Use Assessment,/screens/cl07/substance-use-assessment
+CL08,Clinical Assessment,Medical History,/screens/cl08/medical-history
+CL09,Clinical Assessment,Psychiatric History,/screens/cl09/psychiatric-history
+CL10,Clinical Assessment,Family / Social History,/screens/cl10/family-social-history
+CL11,Clinical Assessment,Conditions / Diagnoses,/screens/cl11/conditions-diagnoses
+CL12,Clinical Assessment,Allergies,/screens/cl12/allergies
+CL13,Clinical Assessment,Risk Assessment,/screens/cl13/risk-assessment
+CL14,Clinical Assessment,Clinical Note,/screens/cl14/clinical-note
+CL15,Clinical Assessment,Note Review / Sign / Correct,/screens/cl15/note-review-sign-correct
+TP01,Treatment Planning,Treatment Plan List,/screens/tp01/treatment-plan-list
+TP02,Treatment Planning,Create Treatment Plan,/screens/tp02/create-treatment-plan
+TP03,Treatment Planning,Treatment Plan Workspace,/screens/tp03/treatment-plan-workspace
+TP04,Treatment Planning,Problems / Needs,/screens/tp04/problems-needs
+TP05,Treatment Planning,Goals,/screens/tp05/goals
+TP06,Treatment Planning,Interventions,/screens/tp06/interventions
+TP07,Treatment Planning,Responsible Disciplines,/screens/tp07/responsible-disciplines
+TP08,Treatment Planning,Review Schedule,/screens/tp08/review-schedule
+TP09,Treatment Planning,Treatment Plan Review,/screens/tp09/treatment-plan-review
+TP10,Treatment Planning,Version Comparison,/screens/tp10/version-comparison
+TP11,Treatment Planning,Approve / Sign Plan,/screens/tp11/approve-sign-plan
+MDT01,Multidisciplinary Care Team,Care Team,/screens/mdt01/care-team
+MDT02,Multidisciplinary Care Team,Assign Care Team,/screens/mdt02/assign-care-team
+MDT03,Multidisciplinary Care Team,MDT Dashboard,/screens/mdt03/mdt-dashboard
+MDT04,Multidisciplinary Care Team,MDT Meetings,/screens/mdt04/mdt-meetings
+MDT05,Multidisciplinary Care Team,Create Meeting,/screens/mdt05/create-meeting
+MDT06,Multidisciplinary Care Team,Meeting Workspace,/screens/mdt06/meeting-workspace
+MDT07,Multidisciplinary Care Team,MDT Patient Brief,/screens/mdt07/mdt-patient-brief
+MDT08,Multidisciplinary Care Team,Decisions / Actions,/screens/mdt08/decisions-actions
+MDT09,Multidisciplinary Care Team,Handover,/screens/mdt09/handover
+MDT10,Multidisciplinary Care Team,Team Workload,/screens/mdt10/team-workload
+TH01,Therapy Management,Therapy Dashboard,/screens/th01/therapy-dashboard
+TH02,Therapy Management,Therapy Calendar,/screens/th02/therapy-calendar
+TH03,Therapy Management,Therapy Programmes,/screens/th03/therapy-programmes
+TH04,Therapy Management,Therapy Modalities,/screens/th04/therapy-modalities
+TH05,Therapy Management,Schedule Individual Session,/screens/th05/schedule-individual-session
+TH06,Therapy Management,Schedule Group Session,/screens/th06/schedule-group-session
+TH07,Therapy Management,Group Roster,/screens/th07/group-roster
+TH08,Therapy Management,Session Workspace,/screens/th08/session-workspace
+TH09,Therapy Management,Attendance,/screens/th09/attendance
+TH10,Therapy Management,Session Note,/screens/th10/session-note
+TH11,Therapy Management,Group Note,/screens/th11/group-note
+TH12,Therapy Management,Pre/Post Measures,/screens/th12/pre-post-measures
+TH13,Therapy Management,Session History,/screens/th13/session-history
+TH14,Therapy Management,Therapist Caseload,/screens/th14/therapist-caseload
+TH15,Therapy Management,Therapy Outcomes,/screens/th15/therapy-outcomes
+AS01,Standardised Assessments,Assessment Dashboard,/screens/as01/assessment-dashboard
+AS02,Standardised Assessments,Assessment Catalogue,/screens/as02/assessment-catalogue
+AS03,Standardised Assessments,Assign Assessment,/screens/as03/assign-assessment
+AS04,Standardised Assessments,Assessment Queue,/screens/as04/assessment-queue
+AS05,Standardised Assessments,Complete Assessment,/screens/as05/complete-assessment
+AS06,Standardised Assessments,Clinician-Administered Assessment,/screens/as06/clinician-administered-assessment
+AS07,Standardised Assessments,Patient Self-Assessment,/screens/as07/patient-self-assessment
+AS08,Standardised Assessments,Assessment Result,/screens/as08/assessment-result
+AS09,Standardised Assessments,Trend View,/screens/as09/trend-view
+AS10,Standardised Assessments,Critical Response Review,/screens/as10/critical-response-review
+AS11,Standardised Assessments,Assessment History,/screens/as11/assessment-history
+AS12,Standardised Assessments,Scoring / Version Evidence,/screens/as12/scoring-version-evidence
+MED01,Medication,Medication Dashboard,/screens/med01/medication-dashboard
+MED02,Medication,Current Medication List,/screens/med02/current-medication-list
+MED03,Medication,Medication Reconciliation,/screens/med03/medication-reconciliation
+MED04,Medication,Create Medication Order,/screens/med04/create-medication-order
+MED05,Medication,Medication Order Detail,/screens/med05/medication-order-detail
+MED06,Medication,Prescription Review,/screens/med06/prescription-review
+MED07,Medication,Medication Administration Record,/screens/med07/medication-administration-record
+MED08,Medication,Medication Round,/screens/med08/medication-round
+MED09,Medication,Record Administration,/screens/med09/record-administration
+MED10,Medication,Missed / Refused Medication,/screens/med10/missed-refused-medication
+MED11,Medication,PRN Medication,/screens/med11/prn-medication
+MED12,Medication,Medication Changes,/screens/med12/medication-changes
+MED13,Medication,Side Effects,/screens/med13/side-effects
+MED14,Medication,Adverse Event,/screens/med14/adverse-event
+MED15,Medication,Medication Adherence,/screens/med15/medication-adherence
+MED16,Medication,Refill / Renewal,/screens/med16/refill-renewal
+MED17,Medication,Drug Interaction / Safety Information,/screens/med17/drug-interaction-safety-information
+RC01,Residential Care,Residential Dashboard,/screens/rc01/residential-dashboard
+RC02,Residential Care,Resident Board,/screens/rc02/resident-board
+RC03,Residential Care,Shift Dashboard,/screens/rc03/shift-dashboard
+RC04,Residential Care,Daily Observations,/screens/rc04/daily-observations
+RC05,Residential Care,Mood / Behaviour,/screens/rc05/mood-behaviour
+RC06,Residential Care,Sleep,/screens/rc06/sleep
+RC07,Residential Care,ADL,/screens/rc07/adl
+RC08,Residential Care,Meals / Intake,/screens/rc08/meals-intake
+RC09,Residential Care,Residential Note,/screens/rc09/residential-note
+RC10,Residential Care,Observation Rounds,/screens/rc10/observation-rounds
+RC11,Residential Care,Incident Report,/screens/rc11/incident-report
+RC12,Residential Care,Safeguarding Event,/screens/rc12/safeguarding-event
+RC13,Residential Care,Critical Event,/screens/rc13/critical-event
+RC14,Residential Care,Escalation Workspace,/screens/rc14/escalation-workspace
+RC15,Residential Care,Shift Handover,/screens/rc15/shift-handover
+RC16,Residential Care,Residential History,/screens/rc16/residential-history
+FB01,"Facility, Bed & Leave",Facility Operations Dashboard,/screens/fb01/facility-operations-dashboard
+FB02,"Facility, Bed & Leave",Live Bed Board,/screens/fb02/live-bed-board
+FB03,"Facility, Bed & Leave",Floor / Unit View,/screens/fb03/floor-unit-view
+FB04,"Facility, Bed & Leave",Room Detail,/screens/fb04/room-detail
+FB05,"Facility, Bed & Leave",Bed Detail,/screens/fb05/bed-detail
+FB06,"Facility, Bed & Leave",Allocate Bed,/screens/fb06/allocate-bed
+FB07,"Facility, Bed & Leave",Transfer Client,/screens/fb07/transfer-client
+FB08,"Facility, Bed & Leave",Bed Status,/screens/fb08/bed-status
+FB09,"Facility, Bed & Leave",Cleaning Queue,/screens/fb09/cleaning-queue
+FB10,"Facility, Bed & Leave",Cleaning / Turnaround Record,/screens/fb10/cleaning-turnaround-record
+FB11,"Facility, Bed & Leave",Maintenance Queue,/screens/fb11/maintenance-queue
+FB12,"Facility, Bed & Leave",Room / Bed Maintenance,/screens/fb12/room-bed-maintenance
+FB13,"Facility, Bed & Leave",Client Leave / Pass List,/screens/fb13/client-leave-pass-list
+FB14,"Facility, Bed & Leave",Request / Approve Leave,/screens/fb14/request-approve-leave
+FB15,"Facility, Bed & Leave",Leave Departure / Return,/screens/fb15/leave-departure-return
+FB16,"Facility, Bed & Leave",Overdue / Missing Resident Escalation,/screens/fb16/overdue-missing-resident-escalation
+DX01,Diagnostics & LIS,Diagnostics Dashboard,/screens/dx01/diagnostics-dashboard
+DX02,Diagnostics & LIS,Diagnostic Orders,/screens/dx02/diagnostic-orders
+DX03,Diagnostics & LIS,New Lab / Diagnostic Order,/screens/dx03/new-lab-diagnostic-order
+DX04,Diagnostics & LIS,Order Detail,/screens/dx04/order-detail
+DX05,Diagnostics & LIS,Specimen Collection Queue,/screens/dx05/specimen-collection-queue
+DX06,Diagnostics & LIS,Specimen Detail,/screens/dx06/specimen-detail
+DX07,Diagnostics & LIS,Results Inbox,/screens/dx07/results-inbox
+DX08,Diagnostics & LIS,Result Detail,/screens/dx08/result-detail
+DX09,Diagnostics & LIS,Diagnostic Report,/screens/dx09/diagnostic-report
+DX10,Diagnostics & LIS,Abnormal Results,/screens/dx10/abnormal-results
+DX11,Diagnostics & LIS,Critical Results / Acknowledgement,/screens/dx11/critical-results-acknowledgement
+DX12,Diagnostics & LIS,Result History / Trends,/screens/dx12/result-history-trends
+DX13,Diagnostics & LIS,LIS Integration Monitor,/screens/dx13/lis-integration-monitor
+NW01,Nutrition & Wellness,Nutrition Dashboard,/screens/nw01/nutrition-dashboard
+NW02,Nutrition & Wellness,Nutrition Assessment,/screens/nw02/nutrition-assessment
+NW03,Nutrition & Wellness,Dietary Requirements,/screens/nw03/dietary-requirements
+NW04,Nutrition & Wellness,Meal Plan,/screens/nw04/meal-plan
+NW05,Nutrition & Wellness,Meal / Intake Tracking,/screens/nw05/meal-intake-tracking
+NW06,Nutrition & Wellness,Supplements,/screens/nw06/supplements
+NW07,Nutrition & Wellness,Weight / Measurement Trends,/screens/nw07/weight-measurement-trends
+NW08,Nutrition & Wellness,Wellness Programme,/screens/nw08/wellness-programme
+NW09,Nutrition & Wellness,Yoga Session,/screens/nw09/yoga-session
+NW10,Nutrition & Wellness,Mindfulness Session,/screens/nw10/mindfulness-session
+NW11,Nutrition & Wellness,Art / Sound / Other Wellness Session,/screens/nw11/art-sound-other-wellness-session
+NW12,Nutrition & Wellness,Wellness Progress,/screens/nw12/wellness-progress
+FM01,Family Programme,Family Dashboard,/screens/fm01/family-dashboard
+FM02,Family Programme,Family / Related Persons,/screens/fm02/family-related-persons
+FM03,Family Programme,Family Access & Consent,/screens/fm03/family-access-consent
+FM04,Family Programme,Family Programme,/screens/fm04/family-programme
+FM05,Family Programme,Family Therapy,/screens/fm05/family-therapy
+FM06,Family Programme,Family Meeting,/screens/fm06/family-meeting
+FM07,Family Programme,Education Session,/screens/fm07/education-session
+FM08,Family Programme,Family Tasks,/screens/fm08/family-tasks
+FM09,Family Programme,Family Communications,/screens/fm09/family-communications
+FM10,Family Programme,Family Progress,/screens/fm10/family-progress
+FM11,Family Programme,Family Portal Access,/screens/fm11/family-portal-access
+SC01,Scheduling & Telehealth,Organisation Calendar,/screens/sc01/organisation-calendar
+SC02,Scheduling & Telehealth,My Calendar,/screens/sc02/my-calendar
+SC03,Scheduling & Telehealth,Client Calendar,/screens/sc03/client-calendar
+SC04,Scheduling & Telehealth,Appointment,/screens/sc04/appointment
+SC05,Scheduling & Telehealth,Recurring Appointment,/screens/sc05/recurring-appointment
+SC06,Scheduling & Telehealth,Resource / Room Calendar,/screens/sc06/resource-room-calendar
+SC07,Scheduling & Telehealth,Telehealth Session,/screens/sc07/telehealth-session
+SC08,Scheduling & Telehealth,Virtual Waiting Room,/screens/sc08/virtual-waiting-room
+SC09,Scheduling & Telehealth,Join Consultation,/screens/sc09/join-consultation
+SC10,Scheduling & Telehealth,Telehealth Consent,/screens/sc10/telehealth-consent
+SC11,Scheduling & Telehealth,Telehealth History,/screens/sc11/telehealth-history
+DC01,Discharge,Discharge Dashboard,/screens/dc01/discharge-dashboard
+DC02,Discharge,Discharge Candidates,/screens/dc02/discharge-candidates
+DC03,Discharge,Discharge Planning,/screens/dc03/discharge-planning
+DC04,Discharge,Discharge Readiness Checklist,/screens/dc04/discharge-readiness-checklist
+DC05,Discharge,Clinical Discharge Summary,/screens/dc05/clinical-discharge-summary
+DC06,Discharge,Medication at Discharge,/screens/dc06/medication-at-discharge
+DC07,Discharge,Referrals,/screens/dc07/referrals
+DC08,Discharge,Follow-up Appointments,/screens/dc08/follow-up-appointments
+DC09,Discharge,Safety / Relapse Prevention Plan,/screens/dc09/safety-relapse-prevention-plan
+DC10,Discharge,Documents / Instructions,/screens/dc10/documents-instructions
+DC11,Discharge,Multidisciplinary Approval,/screens/dc11/multidisciplinary-approval
+DC12,Discharge,Complete Discharge,/screens/dc12/complete-discharge
+AC01,Aftercare & Alumni,Aftercare Dashboard,/screens/ac01/aftercare-dashboard
+AC02,Aftercare & Alumni,Aftercare Plan,/screens/ac02/aftercare-plan
+AC03,Aftercare & Alumni,Follow-up Schedule,/screens/ac03/follow-up-schedule
+AC04,Aftercare & Alumni,Follow-up Workspace,/screens/ac04/follow-up-workspace
+AC05,Aftercare & Alumni,30-Day Review,/screens/ac05/30-day-review
+AC06,Aftercare & Alumni,90-Day Review,/screens/ac06/90-day-review
+AC07,Aftercare & Alumni,6-Month Review,/screens/ac07/6-month-review
+AC08,Aftercare & Alumni,12-Month Review,/screens/ac08/12-month-review
+AC09,Aftercare & Alumni,Outcome Survey,/screens/ac09/outcome-survey
+AC10,Aftercare & Alumni,Re-engagement,/screens/ac10/re-engagement
+AC11,Aftercare & Alumni,Readmission,/screens/ac11/readmission
+AC12,Aftercare & Alumni,Alumni Programme,/screens/ac12/alumni-programme
+BL01,"Billing, Accounts & Payer",Finance Dashboard,/screens/bl01/finance-dashboard
+BL02,"Billing, Accounts & Payer",Client Account,/screens/bl02/client-account
+BL03,"Billing, Accounts & Payer",Charge Ledger,/screens/bl03/charge-ledger
+BL04,"Billing, Accounts & Payer",Unbilled Services,/screens/bl04/unbilled-services
+BL05,"Billing, Accounts & Payer",Create Invoice,/screens/bl05/create-invoice
+BL06,"Billing, Accounts & Payer",Invoice,/screens/bl06/invoice
+BL07,"Billing, Accounts & Payer",Invoice PDF / Print Preview,/screens/bl07/invoice-pdf-print-preview
+BL08,"Billing, Accounts & Payer",Payments,/screens/bl08/payments
+BL09,"Billing, Accounts & Payer",Record Payment,/screens/bl09/record-payment
+BL10,"Billing, Accounts & Payer",Refund,/screens/bl10/refund
+BL11,"Billing, Accounts & Payer",Credit / Adjustment,/screens/bl11/credit-adjustment
+BL12,"Billing, Accounts & Payer",Outstanding Balances,/screens/bl12/outstanding-balances
+BL13,"Billing, Accounts & Payer",Packages,/screens/bl13/packages
+BL14,"Billing, Accounts & Payer",Price / Tariff Master,/screens/bl14/price-tariff-master
+BL15,"Billing, Accounts & Payer",Payers,/screens/bl15/payers
+BL16,"Billing, Accounts & Payer",Insurance / Payer Eligibility,/screens/bl16/insurance-payer-eligibility
+BL17,"Billing, Accounts & Payer",Pre-Authorisation,/screens/bl17/pre-authorisation
+BL18,"Billing, Accounts & Payer",Claims,/screens/bl18/claims
+BL19,"Billing, Accounts & Payer",Denials / Claim Follow-up,/screens/bl19/denials-claim-follow-up
+IN01,Inventory,Inventory Dashboard,/screens/in01/inventory-dashboard
+IN02,Inventory,Item Master,/screens/in02/item-master
+IN03,Inventory,Item Detail,/screens/in03/item-detail
+IN04,Inventory,Location Stock,/screens/in04/location-stock
+IN05,Inventory,Stock Ledger,/screens/in05/stock-ledger
+IN06,Inventory,Goods Receipt,/screens/in06/goods-receipt
+IN07,Inventory,Stock Issue,/screens/in07/stock-issue
+IN08,Inventory,Stock Transfer,/screens/in08/stock-transfer
+IN09,Inventory,Transfer Requests,/screens/in09/transfer-requests
+IN10,Inventory,Stock Adjustment,/screens/in10/stock-adjustment
+IN11,Inventory,Stock Count,/screens/in11/stock-count
+IN12,Inventory,Batch / Lot / Expiry,/screens/in12/batch-lot-expiry
+IN13,Inventory,Expiring Stock,/screens/in13/expiring-stock
+IN14,Inventory,Reorder Suggestions,/screens/in14/reorder-suggestions
+IN15,Inventory,Purchase Requisition,/screens/in15/purchase-requisition
+IN16,Inventory,Vendors,/screens/in16/vendors
+IN17,Inventory,Consumption Analytics,/screens/in17/consumption-analytics
+IN18,Inventory,AI Inventory Intelligence,/screens/in18/ai-inventory-intelligence
+CM01,Communications,Communication Centre,/screens/cm01/communication-centre
+CM02,Communications,Secure Messages,/screens/cm02/secure-messages
+CM03,Communications,Conversation,/screens/cm03/conversation
+CM04,Communications,Compose Message,/screens/cm04/compose-message
+CM05,Communications,Notifications,/screens/cm05/notifications
+CM06,Communications,Reminder Rules,/screens/cm06/reminder-rules
+CM07,Communications,Communication Templates,/screens/cm07/communication-templates
+CM08,Communications,Delivery History,/screens/cm08/delivery-history
+CM09,Communications,Failed / Retry Queue,/screens/cm09/failed-retry-queue
+CM10,Communications,Communication Preferences,/screens/cm10/communication-preferences
+CM11,Communications,Consent / Channel Restrictions,/screens/cm11/consent-channel-restrictions
+DOC01,Documents & Consent,Document Centre,/screens/doc01/document-centre
+DOC02,Documents & Consent,Upload Document,/screens/doc02/upload-document
+DOC03,Documents & Consent,Document Viewer,/screens/doc03/document-viewer
+DOC04,Documents & Consent,Document Version History,/screens/doc04/document-version-history
+DOC05,Documents & Consent,Clinical Document Finalisation,/screens/doc05/clinical-document-finalisation
+DOC06,Documents & Consent,Correction / Addendum,/screens/doc06/correction-addendum
+DOC07,Documents & Consent,Consent Dashboard,/screens/doc07/consent-dashboard
+DOC08,Documents & Consent,Consent Detail,/screens/doc08/consent-detail
+DOC09,Documents & Consent,Capture Consent,/screens/doc09/capture-consent
+DOC10,Documents & Consent,Revoke Consent,/screens/doc10/revoke-consent
+DOC11,Documents & Consent,Electronic Signature,/screens/doc11/electronic-signature
+DOC12,Documents & Consent,Legal Hold,/screens/doc12/legal-hold
+DOC13,Documents & Consent,Document Export,/screens/doc13/document-export
+CP01,Client Portal,Portal Sign In,/screens/cp01/portal-sign-in
+CP02,Client Portal,Portal MFA / Identity Verification,/screens/cp02/portal-mfa-identity-verification
+CP03,Client Portal,Client Home,/screens/cp03/client-home
+CP04,Client Portal,My Programme / Care Plan,/screens/cp04/my-programme-care-plan
+CP05,Client Portal,My Goals,/screens/cp05/my-goals
+CP06,Client Portal,My Schedule,/screens/cp06/my-schedule
+CP07,Client Portal,Assessments / Questionnaires,/screens/cp07/assessments-questionnaires
+CP08,Client Portal,My Medications,/screens/cp08/my-medications
+CP09,Client Portal,Documents,/screens/cp09/documents
+CP10,Client Portal,Reports / Results,/screens/cp10/reports-results
+CP11,Client Portal,Invoices / Payments,/screens/cp11/invoices-payments
+CP12,Client Portal,Secure Messages,/screens/cp12/secure-messages
+CP13,Client Portal,Aftercare,/screens/cp13/aftercare
+CP14,Client Portal,Privacy / Consent,/screens/cp14/privacy-consent
+CP15,Client Portal,Data / Privacy Request,/screens/cp15/data-privacy-request
+CP16,Client Portal,Profile / Preferences,/screens/cp16/profile-preferences
+FP01,Family Portal,Family Portal Sign In,/screens/fp01/family-portal-sign-in
+FP02,Family Portal,Family Home,/screens/fp02/family-home
+FP03,Family Portal,Authorised Client Information,/screens/fp03/authorised-client-information
+FP04,Family Portal,Appointments,/screens/fp04/appointments
+FP05,Family Portal,Family Programme,/screens/fp05/family-programme
+FP06,Family Portal,Family Tasks,/screens/fp06/family-tasks
+FP07,Family Portal,Documents,/screens/fp07/documents
+FP08,Family Portal,Secure Messaging,/screens/fp08/secure-messaging
+FP09,Family Portal,Consent / Access Status,/screens/fp09/consent-access-status
+FP10,Family Portal,Profile,/screens/fp10/profile
+AI01,AI Intelligence,AI Clinical Documentation Assistant,/screens/ai01/ai-clinical-documentation-assistant
+AI02,AI Intelligence,Voice / Transcript Review,/screens/ai02/voice-transcript-review
+AI03,AI Intelligence,AI Intake / Document Extraction Review,/screens/ai03/ai-intake-document-extraction-review
+AI04,AI Intelligence,AI Client Journey Summary,/screens/ai04/ai-client-journey-summary
+AI05,AI Intelligence,Clinical Record Copilot,/screens/ai05/clinical-record-copilot
+AI06,AI Intelligence,AI MDT Brief,/screens/ai06/ai-mdt-brief
+AI07,AI Intelligence,AI Treatment Plan Draft Review,/screens/ai07/ai-treatment-plan-draft-review
+AI08,AI Intelligence,Assessment Trend Explanation,/screens/ai08/assessment-trend-explanation
+AI09,AI Intelligence,Clinical Review Signals,/screens/ai09/clinical-review-signals
+AI10,AI Intelligence,Medication Intelligence,/screens/ai10/medication-intelligence
+AI11,AI Intelligence,AI Discharge Summary Review,/screens/ai11/ai-discharge-summary-review
+AI12,AI Intelligence,AI Handover,/screens/ai12/ai-handover
+AI13,AI Intelligence,AI Task Extraction Review,/screens/ai13/ai-task-extraction-review
+AI14,AI Intelligence,Documentation Completeness,/screens/ai14/documentation-completeness
+AI15,AI Intelligence,Operational Analytics Copilot,/screens/ai15/operational-analytics-copilot
+AI16,AI Intelligence,AI Evidence / Sources Viewer,/screens/ai16/ai-evidence-sources-viewer
+AI17,AI Intelligence,AI Feedback / Report Incorrect Output,/screens/ai17/ai-feedback-report-incorrect-output
+AIA01,AI Administration & Governance,AI Administration Dashboard,/screens/aia01/ai-administration-dashboard
+AIA02,AI Administration & Governance,AI Use-Case Registry,/screens/aia02/ai-use-case-registry
+AIA03,AI Administration & Governance,AI Use-Case Detail,/screens/aia03/ai-use-case-detail
+AIA04,AI Administration & Governance,Model / Provider Registry,/screens/aia04/model-provider-registry
+AIA05,AI Administration & Governance,Prompt Registry,/screens/aia05/prompt-registry
+AIA06,AI Administration & Governance,Prompt Version Detail,/screens/aia06/prompt-version-detail
+AIA07,AI Administration & Governance,AI Policy / Guardrails,/screens/aia07/ai-policy-guardrails
+AIA08,AI Administration & Governance,AI Evaluation Dashboard,/screens/aia08/ai-evaluation-dashboard
+AIA09,AI Administration & Governance,AI Evaluation Cases,/screens/aia09/ai-evaluation-cases
+AIA10,AI Administration & Governance,AI Audit / Evidence Explorer,/screens/aia10/ai-audit-evidence-explorer
+AIA11,AI Administration & Governance,AI Usage / Cost,/screens/aia11/ai-usage-cost
+AIA12,AI Administration & Governance,AI Incident Register,/screens/aia12/ai-incident-register
+AIA13,AI Administration & Governance,Model / Prompt Release Approval,/screens/aia13/model-prompt-release-approval
+RP01,Reporting & Analytics,Executive Dashboard,/screens/rp01/executive-dashboard
+RP02,Reporting & Analytics,Clinical Outcomes,/screens/rp02/clinical-outcomes
+RP03,Reporting & Analytics,Census / Occupancy,/screens/rp03/census-occupancy
+RP04,Reporting & Analytics,Length of Stay,/screens/rp04/length-of-stay
+RP05,Reporting & Analytics,Admission / Discharge,/screens/rp05/admission-discharge
+RP06,Reporting & Analytics,Assessment Outcomes,/screens/rp06/assessment-outcomes
+RP07,Reporting & Analytics,Treatment Goal Outcomes,/screens/rp07/treatment-goal-outcomes
+RP08,Reporting & Analytics,Therapy Utilisation,/screens/rp08/therapy-utilisation
+RP09,Reporting & Analytics,Therapist Caseload,/screens/rp09/therapist-caseload
+RP10,Reporting & Analytics,Medication / Adherence,/screens/rp10/medication-adherence
+RP11,Reporting & Analytics,Incidents / Safeguarding,/screens/rp11/incidents-safeguarding
+RP12,Reporting & Analytics,Family Programme,/screens/rp12/family-programme
+RP13,Reporting & Analytics,Aftercare Outcomes,/screens/rp13/aftercare-outcomes
+RP14,Reporting & Analytics,Readmissions,/screens/rp14/readmissions
+RP15,Reporting & Analytics,Finance,/screens/rp15/finance
+RP16,Reporting & Analytics,Payer / Claims,/screens/rp16/payer-claims
+RP17,Reporting & Analytics,Inventory,/screens/rp17/inventory
+RP18,Reporting & Analytics,Report Export / Scheduled Reports,/screens/rp18/report-export-scheduled-reports
+PR01,Privacy & GDPR,Privacy Operations Dashboard,/screens/pr01/privacy-operations-dashboard
+PR02,Privacy & GDPR,Data Subject Requests,/screens/pr02/data-subject-requests
+PR03,Privacy & GDPR,Request Detail,/screens/pr03/request-detail
+PR04,Privacy & GDPR,Access Request,/screens/pr04/access-request
+PR05,Privacy & GDPR,Rectification Request,/screens/pr05/rectification-request
+PR06,Privacy & GDPR,Erasure Assessment,/screens/pr06/erasure-assessment
+PR07,Privacy & GDPR,Restriction Request,/screens/pr07/restriction-request
+PR08,Privacy & GDPR,Portability Export,/screens/pr08/portability-export
+PR09,Privacy & GDPR,Consent History,/screens/pr09/consent-history
+PR10,Privacy & GDPR,Retention Policies,/screens/pr10/retention-policies
+PR11,Privacy & GDPR,Legal Holds,/screens/pr11/legal-holds
+PR12,Privacy & GDPR,Data Processing / Subprocessor Register,/screens/pr12/data-processing-subprocessor-register
+PR13,Privacy & GDPR,Privacy Incident / Breach,/screens/pr13/privacy-incident-breach
+PR14,Privacy & GDPR,Privacy-Preserving Dataset Register,/screens/pr14/privacy-preserving-dataset-register
+CS01,Clinical Safety & Safeguarding,Clinical Safety Dashboard,/screens/cs01/clinical-safety-dashboard
+CS02,Clinical Safety & Safeguarding,Hazard Log,/screens/cs02/hazard-log
+CS03,Clinical Safety & Safeguarding,Hazard Detail,/screens/cs03/hazard-detail
+CS04,Clinical Safety & Safeguarding,Clinical Risk Management Plan,/screens/cs04/clinical-risk-management-plan
+CS05,Clinical Safety & Safeguarding,Risk Control / Mitigation,/screens/cs05/risk-control-mitigation
+CS06,Clinical Safety & Safeguarding,Safety Evidence,/screens/cs06/safety-evidence
+CS07,Clinical Safety & Safeguarding,Clinical Safety Case,/screens/cs07/clinical-safety-case
+CS08,Clinical Safety & Safeguarding,Clinical Safety Approval,/screens/cs08/clinical-safety-approval
+CS09,Clinical Safety & Safeguarding,Safety Incident / Near Miss,/screens/cs09/safety-incident-near-miss
+CS10,Clinical Safety & Safeguarding,Investigation,/screens/cs10/investigation
+CS11,Clinical Safety & Safeguarding,Corrective / Preventive Actions,/screens/cs11/corrective-preventive-actions
+CS12,Clinical Safety & Safeguarding,Safeguarding Review,/screens/cs12/safeguarding-review
+CS13,Clinical Safety & Safeguarding,Escalation Audit,/screens/cs13/escalation-audit
+INT01,Integration Management,Integration Dashboard,/screens/int01/integration-dashboard
+INT02,Integration Management,Integration Catalogue,/screens/int02/integration-catalogue
+INT03,Integration Management,Integration Instance,/screens/int03/integration-instance
+INT04,Integration Management,FHIR Configuration,/screens/int04/fhir-configuration
+INT05,Integration Management,FHIR Capability / Profile,/screens/int05/fhir-capability-profile
+INT06,Integration Management,FHIR Transaction Monitor,/screens/int06/fhir-transaction-monitor
+INT07,Integration Management,HL7 Interface Configuration,/screens/int07/hl7-interface-configuration
+INT08,Integration Management,HL7 Message Monitor,/screens/int08/hl7-message-monitor
+INT09,Integration Management,LIS Integration,/screens/int09/lis-integration
+INT10,Integration Management,Terminology Service,/screens/int10/terminology-service
+INT11,Integration Management,Identity Provider / SSO,/screens/int11/identity-provider-sso
+INT12,Integration Management,Email / Messaging Provider,/screens/int12/email-messaging-provider
+INT13,Integration Management,Telehealth Provider,/screens/int13/telehealth-provider
+INT14,Integration Management,Drug Knowledge Provider,/screens/int14/drug-knowledge-provider
+INT15,Integration Management,Webhook / API Management,/screens/int15/webhook-api-management
+INT16,Integration Management,Integration Errors / Replay,/screens/int16/integration-errors-replay
+AU01,Audit & Compliance,Audit Dashboard,/screens/au01/audit-dashboard
+AU02,Audit & Compliance,Audit Explorer,/screens/au02/audit-explorer
+AU03,Audit & Compliance,User Activity,/screens/au03/user-activity
+AU04,Audit & Compliance,Client Record Access History,/screens/au04/client-record-access-history
+AU05,Audit & Compliance,Record Change History,/screens/au05/record-change-history
+AU06,Audit & Compliance,Permission / Role Change History,/screens/au06/permission-role-change-history
+AU07,Audit & Compliance,Consent Access History,/screens/au07/consent-access-history
+AU08,Audit & Compliance,Break-Glass Access,/screens/au08/break-glass-access
+AU09,Audit & Compliance,Data Export History,/screens/au09/data-export-history
+AU10,Audit & Compliance,Integration Audit,/screens/au10/integration-audit
+AU11,Audit & Compliance,AI Audit,/screens/au11/ai-audit
+AU12,Audit & Compliance,Compliance Evidence Export,/screens/au12/compliance-evidence-export
+SEC01,Security,Security Dashboard,/screens/sec01/security-dashboard
+SEC02,Security,Authentication Policy,/screens/sec02/authentication-policy
+SEC03,Security,MFA Policy,/screens/sec03/mfa-policy
+SEC04,Security,SSO Configuration,/screens/sec04/sso-configuration
+SEC05,Security,Session Policy,/screens/sec05/session-policy
+SEC06,Security,IP / Network Restrictions,/screens/sec06/ip-network-restrictions
+SEC07,Security,Sensitive Record Policy,/screens/sec07/sensitive-record-policy
+SEC08,Security,Break-Glass Configuration,/screens/sec08/break-glass-configuration
+SEC09,Security,Active Sessions,/screens/sec09/active-sessions
+SEC10,Security,Security Events,/screens/sec10/security-events
+SEC11,Security,API Credentials / Service Accounts,/screens/sec11/api-credentials-service-accounts
+SEC12,Security,Security Audit,/screens/sec12/security-audit
+OFF01,Offline & Mobile Operations,Offline Status,/screens/off01/offline-status
+OFF02,Offline & Mobile Operations,Download Assigned Work,/screens/off02/download-assigned-work
+OFF03,Offline & Mobile Operations,Offline Rounds,/screens/off03/offline-rounds
+OFF04,Offline & Mobile Operations,Offline Observations,/screens/off04/offline-observations
+OFF05,Offline & Mobile Operations,Offline Tasks,/screens/off05/offline-tasks
+OFF06,Offline & Mobile Operations,Pending Synchronisation,/screens/off06/pending-synchronisation
+OFF07,Offline & Mobile Operations,Sync Conflict Resolution,/screens/off07/sync-conflict-resolution
+OFF08,Offline & Mobile Operations,Device / Offline Data Management,/screens/off08/device-offline-data-management

@@ -1,0 +1,22 @@
+{
+  "name": "medixpro360-rehab-enterprise-ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test --test-concurrency=1 src/app/navigation.test.js src/app/adminViews.test.js src/app/ui3Store.test.js src/app/ui4Store.test.js src/app/ui5Store.test.js src/app/accessHardening.test.js src/app/ui6Store.test.js src/app/homeCareStore.test.js src/app/ui8Store.test.js src/app/ui9Store.test.js src/app/ui10Store.test.js src/app/ui11Store.test.js src/app/ui12Store.test.js src/app/ui13Store.test.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "typescript": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {}
+}
