@@ -285,4 +285,4 @@ function App() {
 
 const root = globalThis.__medixproRoot || createRoot(document.getElementById('root'));
 globalThis.__medixproRoot = root;
-root.render(<BrowserRouter><App /></BrowserRouter>);
+root.render(<BrowserRouter basename={import.meta.env.BASE_URL}><App /></BrowserRouter>);
