@@ -1,3 +1,37 @@
+.portalShell { max-width: 1180px; margin: 0 auto; padding: 24px; color: var(--ink, #17212b); }
+.portalHeader { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; padding: 22px 0; border-bottom: 1px solid var(--line, #d9e1e7); }
+.portalHeader h1 { margin: 4px 0 8px; }
+.portalHeader p { margin: 0; color: var(--muted, #637381); }
+.portalNav { display: flex; gap: 8px; flex-wrap: wrap; padding: 16px 0; }
+.portalNav button { border: 1px solid var(--line, #d9e1e7); background: white; border-radius: 8px; padding: 9px 13px; cursor: pointer; text-transform: capitalize; }
+.portalPage { display: grid; gap: 16px; }
+.portalBreadcrumb { color: var(--muted, #637381); font-size: 13px; text-transform: capitalize; }
+.portalStats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.portalStat, .portalCard { background: white; border: 1px solid var(--line, #d9e1e7); border-radius: 8px; padding: 18px; }
+.portalStat { display: grid; gap: 8px; }
+.portalStat span, .portalDetailRow span, .portalSubsection small { color: var(--muted, #637381); }
+.portalStat strong { font-size: 22px; }
+.portalGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.portalCard h2, .portalCard h3 { margin-top: 0; }
+.portalWide { min-width: 0; }
+.portalRow, .portalDetailRow { display: flex; justify-content: space-between; gap: 16px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line, #d9e1e7); }
+.portalDetailRow { align-items: flex-start; flex-direction: column; }
+.portalDetailRow span { font-size: 14px; }
+.portalSubsection { display: grid; gap: 10px; border-top: 1px solid var(--line, #d9e1e7); margin-top: 18px; padding-top: 18px; }
+.portalCheck { display: flex; gap: 10px; align-items: flex-start; margin: 12px 0; }
+.portalLogin { min-height: 70vh; display: grid; place-items: center; padding: 24px; background: #f5f8fa; }
+.portalLoginCard { width: min(440px, 100%); display: grid; gap: 14px; padding: 28px; background: white; border: 1px solid var(--line, #d9e1e7); border-radius: 10px; box-shadow: 0 12px 30px #18364b14; }
+.portalLoginCard h1 { margin: 0; }
+.portalLoginCard p { color: var(--muted, #637381); margin: 0; }
+
+@media (max-width: 720px) {
+	.portalShell { padding: 16px; }
+	.portalHeader { flex-direction: column; }
+	.portalStats, .portalGrid { grid-template-columns: 1fr; }
+	.portalNav { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 12px; }
+	.portalNav button { white-space: nowrap; }
+	.portalRow { align-items: flex-start; flex-direction: column; gap: 4px; }
+}
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root { font-family: 'DM Sans', 'Avenir Next', sans-serif; color: #203039; background: #f4f7f7; font-synthesis: none; }

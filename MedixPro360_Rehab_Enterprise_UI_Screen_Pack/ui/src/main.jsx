@@ -29,6 +29,8 @@ import { Ui10Router } from './app/ui10Views.jsx';
 import { Ui11Router } from './app/ui11Views.jsx';
 import { Ui12Router } from './app/ui12Views.jsx';
 import { Ui13Router } from './app/ui13Views.jsx';
+import { Ui14Router } from './app/ui14Views.jsx';
+import { activateStaffSession, getSessionMode, SESSION_MODES, useUi14Store } from './app/ui14Store.js';
 import { getActiveTenantAccess, getOnboardingAccess, hasValidOnboardingContext } from './app/ui13Store.js';
 import './styles.css';
 import './styles-ui2.css';
@@ -137,6 +139,10 @@ function AccessDenied({ onReturn }) {
   return <PageState tone="amber" title="Access restricted" detail="This workspace or record is outside the permissions and scope of the current persona." action="Return to workspace" onAction={onReturn} />;
 }
 
+function SessionRouteDenied({ navigate }) {
+  return <main className="pageCanvas"><PageState tone="amber" title="Access restricted" detail="This route requires an active staff session. Client Portal sessions cannot access staff workspaces." action="Return to Client Portal" onAction={() => navigate('/portal')} /></main>;
+}
+
 function MetricCard({ label, value, detail, tone = 'teal' }) {
   return <article className={`metricCard ${tone}`}><span>{label}</span><strong>{value}</strong><small>{detail}</small></article>;
 }
@@ -192,6 +198,8 @@ function TaskQueue({ access, navigate }) {
 
 function workspaceRouteAllowed(access, path) {
   if (path === '/register') return true;
+  if (path === '/portal/login' || path === '/portal' || path.startsWith('/portal/')) return true;
+  if (path.startsWith('/admission-documents/')) return [WORKSPACES.CENTRE_OPERATIONS, WORKSPACES.TENANT_ADMINISTRATION].includes(access.workspace);
   if (path === '/subscription/checkout' && access.workspace === 'TENANT_ONBOARDING') return true;
   if (path.startsWith('/super-admin/')) return access.workspace === WORKSPACES.PLATFORM_OPERATIONS;
   if (path.startsWith('/settings/subscription') || path.startsWith('/settings/facilities') || path.startsWith('/subscription/checkout')) return access.workspace === WORKSPACES.TENANT_ADMINISTRATION;
@@ -213,6 +221,7 @@ function workspaceRouteAllowed(access, path) {
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
+  useUi14Store();
   const [profileId, setProfileId] = useState(() => sessionStorage.getItem('medixpro-profile') || 'clinician');
   const [sidebarOpen, setSidebarOpen] = useState(() => typeof window === 'undefined' || window.innerWidth > 900);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -235,12 +244,17 @@ function App() {
   const isUi11Route = location.pathname.startsWith('/ai/');
   const isUi12Route = location.pathname.startsWith('/admin/configuration');
   const isUi13Route = location.pathname === '/register' || location.pathname.startsWith('/super-admin/') || location.pathname.startsWith('/settings/subscription') || location.pathname.startsWith('/settings/facilities') || location.pathname.startsWith('/subscription/checkout');
-  const pageLabel = isUi13Route ? 'SaaS subscription' : isUi12Route ? 'Configuration Centre' : isUi11Route ? 'AI Assistant' : isUi10Route ? getUi10Title(location.pathname) : isUi9Route ? getUi9Title(location.pathname) : isUi8Route ? getUi8Title(location.pathname) : isUi7Route ? getHomeCareTitle(location.pathname) : getUi6Title(location.pathname) || getUi5Title(location.pathname) || getUi4Title(location.pathname) || getUi3Title(location.pathname) || current?.label || workspaceLabel;
+  const isUi14Route = location.pathname === '/portal/login' || location.pathname === '/portal' || location.pathname.startsWith('/portal/') || location.pathname.startsWith('/admission-documents/');
+  const isPortalRoute = location.pathname === '/portal' || location.pathname.startsWith('/portal/');
+  const isPortalLoginRoute = location.pathname === '/portal/login';
+  const pageLabel = isUi14Route ? 'Client Portal' : isUi13Route ? 'SaaS subscription' : isUi12Route ? 'Configuration Centre' : isUi11Route ? 'AI Assistant' : isUi10Route ? getUi10Title(location.pathname) : isUi9Route ? getUi9Title(location.pathname) : isUi8Route ? getUi8Title(location.pathname) : isUi7Route ? getHomeCareTitle(location.pathname) : getUi6Title(location.pathname) || getUi5Title(location.pathname) || getUi4Title(location.pathname) || getUi3Title(location.pathname) || current?.label || workspaceLabel;
   const activeNavigation = isUi3Route ? navigation.find(item => (location.pathname.startsWith('/referrals') && item.id === 'referrals') || (location.pathname.startsWith('/clients') && item.id === 'clients') || (location.pathname.startsWith('/admissions') && item.id === 'admissions')) || current : current;
   const isAdminRoute = location.pathname === '/register' || location.pathname.startsWith('/super-admin/') || location.pathname.startsWith('/settings/subscription') || location.pathname.startsWith('/settings/facilities') || location.pathname.startsWith('/subscription/checkout') || location.pathname.startsWith('/platform/') || location.pathname.startsWith('/admin/') || (location.pathname.startsWith('/work/') && !['/work/my-day', '/work/clients', '/work/clinical', '/work/mdt', '/work/ai-intelligence', '/work/tasks'].includes(location.pathname));
+  const sessionMode = getSessionMode();
 
   const switchProfile = event => {
     const next = event.target.value;
+    activateStaffSession();
     setProfileId(next);
     sessionStorage.setItem('medixpro-profile', next);
     const profile = getAccessProfile(next);
@@ -248,6 +262,9 @@ function App() {
     navigate(first.href);
   };
 
+  if (sessionMode === SESSION_MODES.PORTAL) return isPortalRoute ? <Ui14Router access={null} path={location.pathname} navigate={navigate} /> : <SessionRouteDenied navigate={navigate} />;
+  if (sessionMode === SESSION_MODES.ANONYMOUS) return isPortalLoginRoute ? <Ui14Router access={null} path={location.pathname} navigate={navigate} /> : <SessionRouteDenied navigate={navigate} />;
+  if (sessionMode === SESSION_MODES.STAFF && isPortalRoute) return isPortalLoginRoute ? <Ui14Router access={null} path={location.pathname} navigate={navigate} /> : <SessionRouteDenied navigate={navigate} />;
   return <div className={`appShell ${sidebarOpen ? '' : 'sidebarCollapsed'}`}>
     <aside className="sidebar" aria-label="Primary navigation">
       <div className="brand"><div className="brandGlyph">M</div><div><strong>MedixPro360</strong><span>REHABILITATION PLATFORM</span></div><button className="iconButton sidebarToggle" onClick={() => setSidebarOpen(false)} aria-label="Collapse navigation"><X size={17} /></button></div>
@@ -259,7 +276,7 @@ function App() {
     <main className="mainArea">
       <header className="topbar"><div className="contextBlock"><span className="contextEyebrow">TENANT CONTEXT</span><strong>{access.tenant}</strong><span>{access.location}</span></div><div className="topbarActions"><button className="searchTrigger" aria-label="Search workspace" onClick={() => setSearchOpen(true)}><Search size={17} /><span>Search workspace</span><kbd>⌘ K</kbd></button><button className="topIcon" onClick={() => setDrawer('tasks')} aria-label="Open tasks"><ClipboardList size={19} /><span className="indicator">3</span></button><button className="topIcon" onClick={() => setDrawer('notifications')} aria-label="Open notifications"><Bell size={19} /><span className="indicator red">3</span></button><div className="profileBlock"><UserCircle2 size={25} /><div><b>{access.label}</b><span>Demo access</span></div><ChevronDown size={15} /></div></div></header>
       <div className="demoBar"><span><Sparkles size={14} /> Development-only persona switcher</span><select value={profileId} onChange={switchProfile} aria-label="Choose demo effective access profile">{Object.entries(demoProfiles).map(([id, profile]) => <option key={id} value={id}>{profile.label}</option>)}</select></div>
-      <section className="pageCanvas"><div className="breadcrumbs"><span>MedixPro360 Rehab</span><span>/</span><b>{workspaceLabel}</b><span>/</span><b>{pageLabel}</b></div><div className="pageHeader"><div><span className="kicker">{access.location}</span><h1>{pageLabel}</h1><p>{isLegacy ? 'Legacy route retained for migration traceability.' : 'Your operational view is scoped to effective access, module entitlement and current location.'}</p></div><div className="pageActions"><button className="secondaryButton" onClick={() => setDrawer('notifications')}><Bell size={16} /> Alerts <span className="buttonCount">{getVisibleNotifications(access).length}</span></button><button className="primary" onClick={() => setDrawer('tasks')}><ClipboardList size={16} /> My tasks</button></div></div>{isLegacy ? <LegacyState path={location.pathname} onReturn={() => navigate(current.href)} /> : !workspaceRouteAllowed(access, location.pathname) ? <AccessDenied onReturn={() => navigate(current.href)} /> : location.pathname === '/work/tasks' ? <TaskQueue access={access} navigate={navigate} /> : isUi11Route ? <Ui11Router access={access} path={location.pathname} navigate={navigate} /> : isUi10Route ? <Ui10Router access={access} path={location.pathname} navigate={navigate} /> : isUi9Route ? <Ui9Router access={access} path={location.pathname} navigate={navigate} /> : isUi8Route ? <Ui8Router access={access} path={location.pathname} navigate={navigate} /> : isUi7Route ? <HomeCareRouter access={access} path={location.pathname} navigate={navigate} /> : isUi6Route ? <Ui6Router access={access} path={location.pathname} navigate={navigate} /> : isUi5Route ? <Ui5Router access={access} path={location.pathname} navigate={navigate} /> : isUi4Route ? <Ui4Router access={access} path={location.pathname} navigate={navigate} /> : isUi3Route ? <Ui3Router access={access} path={location.pathname} navigate={navigate} /> : isAdminRoute ? <AdminOverview access={access} path={location.pathname} navigate={navigate} /> : location.pathname.endsWith('ai-intelligence') ? <AiWorkspace /> : <WorkspaceOverview access={access} />}</section>
+      <section className="pageCanvas"><div className="breadcrumbs"><span>MedixPro360 Rehab</span><span>/</span><b>{workspaceLabel}</b><span>/</span><b>{pageLabel}</b></div><div className="pageHeader"><div><span className="kicker">{access.location}</span><h1>{pageLabel}</h1><p>{isLegacy ? 'Legacy route retained for migration traceability.' : 'Your operational view is scoped to effective access, module entitlement and current location.'}</p></div><div className="pageActions"><button className="secondaryButton" onClick={() => setDrawer('notifications')}><Bell size={16} /> Alerts <span className="buttonCount">{getVisibleNotifications(access).length}</span></button><button className="primary" onClick={() => setDrawer('tasks')}><ClipboardList size={16} /> My tasks</button></div></div>{isLegacy ? <LegacyState path={location.pathname} onReturn={() => navigate(current.href)} /> : !workspaceRouteAllowed(access, location.pathname) ? <AccessDenied onReturn={() => navigate(current.href)} /> : isUi14Route ? <Ui14Router access={access} path={location.pathname} navigate={navigate} /> : location.pathname === '/work/tasks' ? <TaskQueue access={access} navigate={navigate} /> : isUi11Route ? <Ui11Router access={access} path={location.pathname} navigate={navigate} /> : isUi10Route ? <Ui10Router access={access} path={location.pathname} navigate={navigate} /> : isUi9Route ? <Ui9Router access={access} path={location.pathname} navigate={navigate} /> : isUi8Route ? <Ui8Router access={access} path={location.pathname} navigate={navigate} /> : isUi7Route ? <HomeCareRouter access={access} path={location.pathname} navigate={navigate} /> : isUi6Route ? <Ui6Router access={access} path={location.pathname} navigate={navigate} /> : isUi5Route ? <Ui5Router access={access} path={location.pathname} navigate={navigate} /> : isUi4Route ? <Ui4Router access={access} path={location.pathname} navigate={navigate} /> : isUi3Route ? <Ui3Router access={access} path={location.pathname} navigate={navigate} /> : isAdminRoute ? <AdminOverview access={access} path={location.pathname} navigate={navigate} /> : location.pathname.endsWith('ai-intelligence') ? <AiWorkspace /> : <WorkspaceOverview access={access} />}</section>
     </main>
     {drawer && <aside className="rightDrawer" aria-label={drawer === 'tasks' ? 'Tasks' : 'Notifications'}><div className="drawerHeader"><div><span className="kicker">Scoped workspace queue</span><h2>{drawer === 'tasks' ? 'My tasks' : 'Notifications'}</h2></div><button className="iconButton" onClick={() => setDrawer(null)} aria-label="Close drawer"><X size={18} /></button></div>{drawer === 'tasks' ? <div className="drawerList">{getVisibleTasks(access).map(item => <button className="drawerItem" key={item.id} onClick={() => { setDrawer(null); navigate(item.destinationRoute); }}><div className="taskCheck"><Check size={14} /></div><div><b>{item.title}</b><small>{item.owner} · {item.due}</small></div></button>)}</div> : <div className="drawerList">{getVisibleNotifications(access).map(item => <button className="drawerItem notification" key={item.id} onClick={() => { setDrawer(null); navigate(item.destinationRoute); }}><span className="queueDot blue" /><div><b>{item.title}</b><small>{item.detail}</small></div></button>)}</div>}<button className="drawerLink" onClick={() => { setDrawer(null); navigate('/work/tasks'); }}>Open full queue <ArrowUpRight size={16} /></button></aside>}
     {searchOpen && <SearchPanel access={access} onClose={() => setSearchOpen(false)} />}
