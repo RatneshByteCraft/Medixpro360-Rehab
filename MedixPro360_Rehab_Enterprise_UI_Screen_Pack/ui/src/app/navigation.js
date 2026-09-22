@@ -70,6 +70,7 @@ const nav = [
   { id: 'billing-charges', label: 'Charges', icon: 'receipt', href: '/billing/charges', workspace: WORKSPACES.BILLING_OPERATIONS, permission: 'billing.view', module: 'billing' },
   { id: 'billing-payers', label: 'Payers & tariffs', icon: 'wallet', href: '/billing/payers', workspace: WORKSPACES.BILLING_OPERATIONS, permission: 'billing.view', module: 'billing' },
   { id: 'inventory-overview', label: 'Inventory overview', icon: 'boxes', href: '/inventory/overview', workspace: WORKSPACES.INVENTORY_OPERATIONS, permission: 'inventory.view', module: 'inventory' },
+  { id: 'inventory-request', label: 'Request stock', icon: 'clipboard', href: '/inventory/request', workspace: WORKSPACES.INVENTORY_OPERATIONS, permission: 'inventory.request', module: 'inventory' },
   { id: 'stock', label: 'Stock & requests', icon: 'package', href: '/inventory/stock', workspace: WORKSPACES.INVENTORY_OPERATIONS, permission: 'inventory.view', module: 'inventory' },
   { id: 'inventory-items', label: 'Item master', icon: 'boxes', href: '/inventory/items', workspace: WORKSPACES.INVENTORY_OPERATIONS, permission: 'inventory.view', module: 'inventory' },
   { id: 'inventory-transfers', label: 'Transfers', icon: 'arrow', href: '/inventory/transfers', workspace: WORKSPACES.INVENTORY_OPERATIONS, permission: 'inventory.view', module: 'inventory' }
